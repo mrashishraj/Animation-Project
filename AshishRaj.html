@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display:flex;
+        justify-content: center;
+        margin: auto;
+    }
+    .container {
+        width: 160px;
+        height: 160px;
+        position: fixed;
+        margin-top: 40vh;
+    }
+    .boxStyle{
+        height: 45px;
+        width: 45px;
+        border-radius: 50px;
+        position: absolute;
+    }
+   
+    .top-right {
+        right: 0;
+    }
+    .bottom-right {
+        bottom: 0;
+        right: 0;
+    }
+    .bottom-left {
+        bottom:0;
+    }
+</style>
+<body>
+    <div class="container" id="container">
+        <div class="bottom-left boxStyle "></div>
+        <div class="bottom-right boxStyle "></div>
+        <div class="top-right boxStyle "></div>
+        <div class="top-left boxStyle "></div>
+    </div>
+    <div style="margin-top:65vh;">
+        <button onclick="startAnimation()">Start</button>
+        <button onclick="stopAnimation()">Stop</button>
+    </div>
+</body>
+<script>
+    var bottomLeft = document.querySelector('.bottom-left')
+    var bottomRight = document.querySelector('.bottom-right')
+    var topLeft = document.querySelector('.top-left')
+    var topRight = document.querySelector('.top-right')
+
+    bottomLeft.style.backgroundColor='#2f7d30'
+    bottomRight.style.backgroundColor='#2bb5f7'
+    topLeft.style.backgroundColor='#ff5521'
+    topRight.style.backgroundColor='#ffef5a'    
+
+    function changeColor(){
+        changeWidth()
+        if(bottomLeft.clientHeight==45){
+            if(bottomLeft.style.backgroundColor=='rgb(47, 125, 48)'){
+                bottomLeft.style.backgroundColor='#ff5521'
+                bottomRight.style.backgroundColor='#2f7d30'
+                topLeft.style.backgroundColor='#ffef5a'
+                topRight.style.backgroundColor='#2bb5f7'
+
+                bottomLeft.style.transition='all 1s'
+                bottomRight.style.transition='all 1s'
+                topLeft.style.transition='all 1s'
+                topRight.style.transition='all 1s'
+
+            }else if(bottomLeft.style.backgroundColor=='rgb(255, 85, 33)'){
+                bottomLeft.style.backgroundColor='#ffef5a'
+                bottomRight.style.backgroundColor='#ff5521'
+                topLeft.style.backgroundColor='#2bb5f7'
+                topRight.style.backgroundColor='#2f7d30'
+
+                bottomLeft.style.transition='all 1s'
+                bottomRight.style.transition='all 1s'
+                topLeft.style.transition='all 1s'
+                topRight.style.transition='all 1s'
+
+
+            }else if(bottomLeft.style.backgroundColor=='rgb(255, 239, 90)'){
+                bottomLeft.style.backgroundColor='#2bb5f7'
+                bottomRight.style.backgroundColor='#ffef5a'
+                topLeft.style.backgroundColor='#2f7d30'
+                topRight.style.backgroundColor='#ff5521'
+
+                bottomLeft.style.transition='all 1s'
+                bottomRight.style.transition='all 1s'
+                topLeft.style.transition='all 1s'
+                topRight.style.transition='all 1s'
+
+
+            }else if(bottomLeft.style.backgroundColor=='rgb(43, 181, 247)'){
+                bottomLeft.style.backgroundColor='#2f7d30'
+                bottomRight.style.backgroundColor='#2bb5f7'
+                topLeft.style.backgroundColor='#ff5521'
+                topRight.style.backgroundColor='#ffef5a'
+
+                bottomLeft.style.transition='all 1s'
+                bottomRight.style.transition='all 1s'
+                topLeft.style.transition='all 1s'
+                topRight.style.transition='all 1s'
+
+
+            }
+        }
+    }
+
+    function changeWidth(){
+        if (topLeft.clientWidth==45){
+            topLeft.style.width="100%";
+            topRight.style.height="100%";
+            bottomLeft.style.height="100%";
+            bottomRight.style.width="100%";
+            topLeft.style.transition='width 1s linear 0s'
+            topRight.style.transition='height 1s linear 0s'
+            bottomLeft.style.transition='height 1s linear 0s'
+            bottomRight.style.transition='width 1s linear 0s'
+        console.log('forward')
+        }
+        else if(topLeft.clientWidth==160){
+            topLeft.style.width="45px";
+            topRight.style.height="45px";
+            bottomLeft.style.height="45px";
+            bottomRight.style.width="45px";
+            topLeft.style.transition='width 1s linear 0s'
+            topRight.style.transition='height 1s linear 0s'
+            bottomLeft.style.transition='height 1s linear 0s'
+            bottomRight.style.transition='width 1s linear 0s'
+            console.log('backward')
+        }
+    }
+
+    function stop(){
+        topLeft.style.width="45px";
+        topRight.style.height="45px";
+        bottomLeft.style.height="45px";
+        bottomRight.style.width="45px";
+        topLeft.style.transition='width 1s linear 0s'
+        topRight.style.transition='height 1s linear 0s'
+        bottomLeft.style.transition='height 1s linear 0s'
+        bottomRight.style.transition='width 1s linear 0s'
+    }
+
+    var start;
+
+    function startAnimation(){
+        start = setInterval(changeColor,100)
+        console.log("animation started")
+    }
+    function stopAnimation(){
+        clearInterval(start)
+        stop()
+        console.log("animation stoped")
+
+    }
+</script>
+</html>
